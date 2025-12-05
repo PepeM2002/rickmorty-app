@@ -1,0 +1,31 @@
+<div class="container">
+    <h1>Personajes</h1>
+
+
+    <div class="search-bar">
+        <input type="text" placeholder="Buscar personaje..." [(ngModel)]="search" (keyup.enter)="buscar()">
+        <button (click)="buscar()">Buscar</button>
+    </div>
+
+    <div class="grid">
+        <div class="card" *ngFor="let item of data">
+            <img [src]="item.image" alt="{{ item.name }}" />
+
+            <div class="content">
+                <h2>{{ item.name }}</h2>
+                <p><strong>Estado:</strong> {{ item.status }}</p>
+                <p><strong>Especie:</strong> {{ item.species }}</p>
+                <p><strong>Género:</strong> {{ item.gender }}</p>
+                <p><strong>Origen:</strong> {{ item.origin.name }}</p>
+                <p><strong>Ubicación:</strong> {{ item.location.name }}</p>
+                <p><strong>Episodios:</strong> {{ item.episode.length }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="pagination">
+        <button (click)="anterior()" [disabled]="page === 1">⟨ Anterior</button>
+        <span>Página {{ page }} de {{ totalPages }}</span>
+        <button (click)="siguiente()" [disabled]="page === totalPages">Siguiente ⟩</button>
+    </div>
+</div>
